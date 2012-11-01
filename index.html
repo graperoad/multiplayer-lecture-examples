@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<script src="js/socket.io.js"></script>
+		<script>
+		  var socket = io.connect('http://localhost');
+
+		  //when we connect, run this function
+		  socket.on('connect', function() {
+		  	socket.emit("new player", { name: "Steve "+Math.random() });
+		  })
+
+		  socket.on('new player', function(data) {
+		  	console.log(data);
+		  })
+		  
+		  /*
+		  socket.on('news', function (data) {
+		    console.log(data);
+		    socket.emit('my other event', { my: 'data' });
+		  });
+			*/
+		</script>
+	</head>
+	<body>
+		<div id="outputDiv"></div>
+	</body>
+</html>
